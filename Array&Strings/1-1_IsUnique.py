@@ -7,7 +7,10 @@ structures?
 
     ASCII Character -> That means that each character can have 128 (2^7) possible values. Thus, the sting length is
     maximum 128 characters long.
-    
+
+
+Written by:
+Victor Arango-Quiroga (vdarango@hotmail.com)
 '''
 
 def solution(text):

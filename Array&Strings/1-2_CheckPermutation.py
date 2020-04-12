@@ -9,6 +9,9 @@ Possible Solution:
 If one word is a permutation of the other, then they have the same character count. Meaning that 'god' and 'dog' have
 both one 'g', one 'o', and one 'd'.
 
+
+Written by:
+Victor Arango-Quiroga (vdarango@hotmail.com)
 '''
 
 
@@ -25,6 +28,7 @@ def solution1(word1, word2):
 
     Time complexity: O(N) where N is the size of word1 or word2 (both must be equal).
     Space Complexity: O(128) = O(1) because we are using a list of 128 elements.
+
     '''
 
     if len(word1) != len(word2): return False
