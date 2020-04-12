@@ -1,11 +1,12 @@
-''' Implement an algorithm to determine if a string has all unique characters. What if you cannot use additional data
-    structures? '''
+'''
+Question:
+Implement an algorithm to determine if a string has all unique characters. What if you cannot use additional data
+structures?
 
+    Assumptions: String will contain ASCII Characters
 
-''' Assumptions: String will contain ASCII Characters 
-
-    ASCII Character -> That means that each character can have 128 (2^7) possible values. Thus, the sting length is 
-    maximum 128 characters long.  
+    ASCII Character -> That means that each character can have 128 (2^7) possible values. Thus, the sting length is
+    maximum 128 characters long.
     
 '''
 
