@@ -39,7 +39,7 @@ def solution1(string):
             num_odd_freq += 1
         else:
             num_odd_freq -= 1
-    print(num_odd_freq)
+    # print(num_odd_freq)
     return False if num_odd_freq > 1 else True
 
 def charVal(char):
@@ -51,7 +51,7 @@ def charVal(char):
 def solution2(string):
     '''
     An extension of solution 1, but here we ignore non-letter characters. Additionally, I am using only an array of
-    size 26.
+    size 26. Time and space complexity do not change, even though less space is used.
     '''
     # Change to lowercase and replace spaces with empty space
     string = string.lower().replace(' ', '')
@@ -69,6 +69,40 @@ def solution2(string):
 
     return False if odd_count > 1 else True
 
+def solution3(string):
+    '''
+    similar to Solution 2, but instead of using a list to keep track of the count, I will use a binary implementation to
+    check odd frequencies. Here, I flip a bit at the position corresponding to each character each time that it is
+    inspected. Thus, at the end, if a char has even frequency, its corresponding bit will be 0 at the end. On the other
+    hand, if the char has odd frequency, then its corresponding bit will be a one at the end. If there are ones at the
+    end, then we have to shift to the right until the first bit corresponds to a 1. Then we can check if there are more
+    than one 1.
+
+    Time and space complexity do not change from previous solutions even though less space is used.
+    '''
+
+    # Change string to lower case and remove white spaces
+    string = string.lower().replace(' ','')
+
+    binary_checker = 0
+    for char in string:
+        val = charVal(char) # val E[0,25]
+        if val != -1:
+            bit_checker = binary_checker & 1 << val # binary anding with mask similar to 00100
+            # flip bit at location val
+            if bit_checker > 0:
+                binary_checker &= ~(1<<val)  # flip 1 to 0 - binary anding with mask similar to 1110111
+            else:
+                binary_checker |= 1<<val # flip zero to 1
+
+    if binary_checker == 0: return True # even frequencies
+
+    # print("This is the binary number {0:b}".format(binary_checker))
+    # binary check is not zero, then shift to the right until first bit is a 1
+    while binary_checker & 1 == 0:
+        binary_checker = binary_checker >> 1
+    # print("{0:b}".format(binary_checker))
+    return False if binary_checker > 1 else True
 
 
 if __name__ == '__main__':
@@ -76,3 +110,4 @@ if __name__ == '__main__':
     arg1 = str(input())
     print(solution1(arg1))
     print(solution2(arg1))
+    print(solution3(arg1))
