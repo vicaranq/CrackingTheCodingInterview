@@ -1,7 +1,20 @@
 '''
 Question:
+There are three type of edits that can be performed on strings. Insert a character, remove a character or replace a
+character. Given two strings, write a code to check if they are one or zero edits away.
+
+Solution:
+
+We can have two pivots traversing each string, they must have at most one difference and once that difference is found,
+we change the pivots position based on the lens of both strings (i.e. if lens are same or different).
+
+Time complexity: O(N) where N is the number of elements in the smaller (or any word if lens are equal) word.
+Space Complexity: O(1)
 
 
+
+Written by:
+Victor Arango-Quiroga (vdarango@hotmail.com)
 '''
 
 def solution1(w1, w2):

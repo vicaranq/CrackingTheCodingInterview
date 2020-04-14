@@ -9,6 +9,10 @@ and zero the cols and rows as needed
 Time complexity: O(M * N) which is the minimum we can do since we have to visit all elements in the matrix.
 Space complexity: O(max(M,N)) since we are using lists to store rows and cols that need to be zero. In the worst case
                   the vectors will have a max len of the longest dimension.
+
+
+Written by:
+Victor Arango-Quiroga (vdarango@hotmail.com)
 '''
 
 

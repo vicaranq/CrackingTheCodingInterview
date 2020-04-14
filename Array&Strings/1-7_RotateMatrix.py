@@ -10,6 +10,12 @@ e.g.:
  [4, 5, 6]   -- swap ver diag -->   [2, 5, 8]  -- swap columns -->      [8, 5, 2]
  [7, 8, 9]                          [3, 6, 9]                           [9, 6, 3]
 
+time complexity: O(MxN)
+space complexity: O(1) since all operations are performed inplace
+
+
+Written by:
+Victor Arango-Quiroga (vdarango@hotmail.com)
 '''
 
 def solution1(matrix):

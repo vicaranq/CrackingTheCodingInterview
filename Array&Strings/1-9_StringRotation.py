@@ -15,6 +15,10 @@ let's define s1' =s1+s1
 s1' = s1s1 = xyxy which is equivalent to x + yx + y = x + s2 + y = xs2y
 Thus, s2 is subString of s1s1.
 
+
+
+Written by:
+Victor Arango-Quiroga (vdarango@hotmail.com)
 '''
 
 

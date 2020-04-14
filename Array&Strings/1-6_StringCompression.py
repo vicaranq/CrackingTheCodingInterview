@@ -12,12 +12,22 @@ Example1 :
 Example2 :
     Input : aaaaaaaaaabbccd
     Output  a10b2c2d1
+
+
+
+Written by:
+Victor Arango-Quiroga (vdarango@hotmail.com)
 '''
 import timeit
 
 
 def solution1(string):
-
+    '''
+    Time Complexity: O(N) where N is the number of chars in string
+    Space Complexity: O(N)
+    :param string: String to be compressed (e.g. aabcccccaaa)
+    :return: compressed string if its length is smaller than original, otherwise returns original string
+    '''
     temp_letter = string[0] # init to first letter
     count = 0
     string_compressed = ''
@@ -40,9 +50,7 @@ def solution1(string):
 
 def solution2(string):
     '''
-    more efficient concatenation
-    :param string:
-    :return:
+    More efficient concatenation compared to solution 1. Time and space complexity remain the same as solution2
     '''
 
     temp_letter = string[0] # init to first letter
@@ -68,7 +76,8 @@ def solution2(string):
 
 def solution3(string):
     ''' Check if compressed string is going to be smaller before creating the compresses string. Also, use the size info
-    to create an empty array with proper size'''
+    to create an empty array with proper size. Time and space complexity remain equal. However, we use O(1) space for
+    cases where the compressed string is longer than the original one '''
 
     compressed_string_len = getCompressedLen(string)
 
@@ -160,7 +169,8 @@ if __name__ =='__main__':
     # print(f'solution3 time:  {min(times)}')
 
     '''
-    solution1 time:  14.6234589
+    For 1000 concatenations 
+    solution1 time:  14.6234589 
     solution2 time:  12.434463800000003
     solution3 time:  11.5387766
     '''

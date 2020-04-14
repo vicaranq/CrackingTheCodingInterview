@@ -6,6 +6,9 @@ Example:
     Input: 'Tact Coa'
     Output: True  # because there is a permutation of the input that is a Palindrome (taco cat)
 
+
+Written by:
+Victor Arango-Quiroga (vdarango@hotmail.com)
 '''
 
 def solution1(string):
