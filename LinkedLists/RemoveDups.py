@@ -1,7 +1,7 @@
 '''
 
 Question: Write code to remove duplicates from an unsorted linked list.
-Follow Up: How would you solve this problem if a temporary buffer is not allowed?
+Follow Up: How would you solve this problem if a temporary buffer is not allowed? -> N^2 solution to find repeated for each element.
 
 Answer:
 Keep a dictionary having data that has been visited, if found again, then remove.
