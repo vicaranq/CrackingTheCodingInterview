@@ -26,6 +26,28 @@ def sol_recursive(node, k , result):
 
     return temp
 
+# -------------------------------------------------------
+def solution2(head,k):
+
+    p2 = 1
+    node = head
+    while node != None and p2 < k:
+        node = node.next
+        p2 += 1
+
+    if node == None: return False # ll is smaller than k
+
+    # node is where p2 should start
+    node_p2 = node
+    node_p1 = head
+
+    while node_p2.next != None:
+        node_p1 = node_p1.next
+        node_p2 = node_p2.next
+
+    return node_p1.data
+
+
 if __name__ == '__main__':
 
     temp_list = list(map(int,input().split()))
@@ -43,4 +65,7 @@ if __name__ == '__main__':
         print(node.data, end="->")
         node = node.next
 
-    print( "The Kth to the last element is: {} ".format(solution1(head,k)))
+    print( "\nThe Kth to the last element is: {} ".format(solution1(head,k)))
+
+    print( "The Kth to the last element is: {} ".format(solution2(head,k)))
+
