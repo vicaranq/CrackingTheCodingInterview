@@ -84,9 +84,36 @@ def solution2_helper(h1, h2, prev_node, carry):
     elif h1:
         solution2_helper(h1.next, None, prev_node.next, carry)
 
+def ll_len(head):
+
+    count = 0
+    while head != None:
+        count += 1
+        head = head.next
+    return count
+
+def pad(head,count):
+    # pad front of LL with zeros
+
+    while count > 0:
+        n = Node(0)
+        n.next = head
+        head = n
+        count -= 1
+    return head
 
 def solution_followup(h1, h2):
 
+    len1 = ll_len(h1)
+    len2 = ll_len(h2)
+
+    if len1 < len2:
+        h1 = pad(h1, len2-len1)
+    elif len1 > len2:
+        h2 = pad(h2, len1-len2)
+
+    # printLL(h1)
+    # printLL(h2)
     (carry, head) = folloup_helper(h1, h2)
 
     if carry:
@@ -104,7 +131,13 @@ def folloup_helper(h1, h2):
     sum += h1.data if h1 else 0
     sum += h2.data if h2 else 0
 
-    data_store = folloup_helper(h1.next, h2.next)
+    if h1 and h2:
+        data_store = folloup_helper(h1.next, h2.next)
+    elif h2:
+        data_store = folloup_helper(None, h2.next)
+    else:
+        data_store = folloup_helper(h1.next, None)
+
     prev_carry = data_store[0]
     prev_digit_object = data_store[1]
 
@@ -135,18 +168,18 @@ def printLL(head):
         node = node.next
     print()
 if __name__ == '__main__':
-    print("Enter numbers representing Linked Lists: (e.g. '7 1 6' and '5 9 2')")
-    ll = list(map(int,input().split()))
-    ll2 = list(map(int,input().split()))
-    h1 = createLL(ll)
-    h2 = createLL(ll2)
-
-    printLL(h1)
-    printLL(h2)
-
-    # get sum
-    sum_head = solution2(h1,h2)
-    printLL(sum_head)
+    # print("Enter numbers representing Linked Lists: (e.g. '7 1 6' and '5 9 2')")
+    # ll = list(map(int,input().split()))
+    # ll2 = list(map(int,input().split()))
+    # h1 = createLL(ll)
+    # h2 = createLL(ll2)
+    #
+    # printLL(h1)
+    # printLL(h2)
+    #
+    # # get sum
+    # sum_head = solution2(h1,h2)
+    # printLL(sum_head)
 
     # --- Follow Up ---
     print("\nFOLLOW UP:\nEnter numbers representing theLinked List: (e.g. '6 1 7')\nLL1:")
