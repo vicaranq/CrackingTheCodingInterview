@@ -9,9 +9,9 @@ class Node:
 
 
 def solution1(head):
-    ''' Implementing an iterative approach to find where the middle is using a slow and fast pivot. I create a stack
-    and append values while iterating to half of the list. Then, I start checking top of the stack with next element of
-     slow. Check is done for the ODD case. '''
+    ''' Implementing an iterative approach to find where the middle is using a slow and fast pivots. I create a stack
+    and append values while iterating to half of the list. Then, I start checking top of the stack with next elements of
+     slow pivot. Check is done for the ODD case. '''
     s, f = (head, head)
     stack = []
 
@@ -36,7 +36,46 @@ def solution1(head):
     return True
 
 
+class LL:
+    def __init__(self, node):
+        self.head = node
+        self.tail = node
 
+def rec_reverse(n):
+
+    if not n.next:
+        ll = LL(Node(n.data))
+        return ll
+
+    ll = rec_reverse(n.next)
+    nn = Node(n.data)
+    ll.tail.next = nn
+    ll.tail = nn
+    return ll
+
+def iter_reverse(n):
+    head = None
+    while n != None:
+        nn = Node(n.data)
+        nn.next = head
+        head = nn
+        n = n.next
+    return head
+
+def solution2(head):
+
+    # reversed_ll = rec_reverse(head)
+    # return compare(head,reversed_ll.head)
+    reversed_ll_head = iter_reverse(head)
+    return compare(head,reversed_ll_head)
+
+def compare(h1, h2):
+
+    while h1 and h2:
+        if h1.data != h2.data:
+            return False
+        h1, h2 = (h1.next, h2.next)
+    return True
 
 
 def createLL(ll):
@@ -62,5 +101,6 @@ if __name__ == '__main__':
     h1 = createLL(ll)
 
     printLL(h1)
-    # get sum
     print("Is the LL a Palindrome: {}".format(solution1(h1)))
+
+    print("Is the LL a Palindrome: {}".format(solution2(h1)))
